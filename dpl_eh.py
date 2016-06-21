@@ -21,12 +21,9 @@ items = random.sample(docs,1)
 
 for item in items:
   url = "https://dp.la/item/" + item["id"]
-  description = item["sourceResource"]["title"]
-  eh = "#eh?"
-  description = description + "\n" + eh
-  if len(description) > 103:
-    while len(description) + 3 > 102:
-      description = description[:len(description) - 1]
-    description = description + '...'
+  description = item["sourceResource"]["title"][0]
+  description = (description[:115] + '...') if len(description) > 115 else description
+  if len(description) <= 1:
+      break
   tweet_text = "%s %s" % (description,url)
   api.update_status(tweet_text)
