@@ -22,8 +22,8 @@ items = random.sample(docs,1)
 for item in items:
   url = item["isShownAt"]
   description = item["sourceResource"]["title"]
-  fuck_yeah = "#eh?"
-  description = description + "\n" + fuck_yeah
+  eh = "#eh?"
+  description = description + "\n" + eh
   if len(description) > 103:
     while len(description) + 3 > 102:
       description = description[:len(description) - 1]
