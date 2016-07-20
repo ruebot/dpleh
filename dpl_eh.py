@@ -22,10 +22,11 @@ items = random.sample(docs,1)
 for item in items:
   url = "https://dp.la/item/" + item["id"]
   description = item["sourceResource"]["title"][0]
-  description = (description[:105] + '...') if len(description) > 105 else description
+  description = (description[:101] + '...') if len(description) > 105 else description
   if len(description) <= 1:
       break
   cancon = "#CanCon"
-  description = description + "\n" + cancon
+  canadian_flag = us_flag = u'\U0001F1E8\U0001F1E6'
+  description = description + "\n" + " " + canadian_flag + " " + cancon
   tweet_text = "%s %s" % (description,url)
   api.update_status(tweet_text)
